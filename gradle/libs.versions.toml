@@ -28,7 +28,7 @@ retrofit = "2.9.0"
 interceptor = "4.9.0"
 
 # hilt
-hilt = "2.49"
+hilt = "2.51.1"
 hiltCompose = "1.2.0"
 
 [libraries]
