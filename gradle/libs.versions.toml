@@ -1,7 +1,7 @@
 [versions]
 agp = "8.4.1"
 kotlin = "2.0.0"
-coreKtx = "1.13.1"
+
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
@@ -31,8 +31,13 @@ interceptor = "4.9.0"
 hilt = "2.51.1"
 hiltCompose = "1.2.0"
 
+# notification
+coreKtx = "1.13.1"
+runtime = "2.9.0"
+accompanistPermissions = "0.31.1-alpha"
+
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -69,6 +74,11 @@ com-squareup-retrofokhttp3 = { group = "com.squareup.okhttp3", name = "logging-i
 com-google-hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 com-google-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 com-google-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltCompose" }
+
+# notification
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "runtime" }
+accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanistPermissions" }
 
 [bundles]
 room = [

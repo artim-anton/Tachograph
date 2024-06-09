@@ -1,14 +1,12 @@
-package ua.sten.tachograph
+package ua.sten.tachograph.servicies
 
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import androidx.annotation.RequiresApi
-import dagger.hilt.android.HiltAndroidApp
 
-@HiltAndroidApp
-class TachographTopApplication: Application (){
+class NotificationApplication : Application() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate() {
         super.onCreate()
