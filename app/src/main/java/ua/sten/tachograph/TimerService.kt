@@ -4,10 +4,10 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import android.util.Log
-import java.util.Timer
-import java.util.TimerTask
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
+import java.util.Timer
+import java.util.TimerTask
 
 class TimerService : Service() {
 

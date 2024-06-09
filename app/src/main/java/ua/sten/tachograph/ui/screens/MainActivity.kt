@@ -31,9 +31,8 @@ class MainActivity : ComponentActivity() {
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
-                    TimerScreenContent(timerViewModel)
                     CountryListScreen()
-
+                    TimerScreenContent(timerViewModel)
                     val intent = Intent(this, TimerService::class.java)
                     startService(intent)
                 }
