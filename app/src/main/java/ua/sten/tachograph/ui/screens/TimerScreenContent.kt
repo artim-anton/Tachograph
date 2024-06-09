@@ -22,16 +22,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
+import ua.sten.tachograph.data.room.Shift
 import ua.sten.tachograph.servicies.NotificationHandler
+import ua.sten.tachograph.ui.viewmodels.ShiftViewModel
 import ua.sten.tachograph.ui.viewmodels.TimerViewModel
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 fun TimerScreenContent(timerViewModel: TimerViewModel, context: Context) {
     val timerValue by timerViewModel.timer.collectAsState()
+    val shiftViewModel: ShiftViewModel = viewModel()
 
     TimerScreen(
         context = context,
@@ -39,7 +45,12 @@ fun TimerScreenContent(timerViewModel: TimerViewModel, context: Context) {
         onStartClick = { timerViewModel.startTimer() },
         onPauseClick = { timerViewModel.pauseTimer() },
         onStopClick = { timerViewModel.stopTimer() } ,
-        onCreateNotification = { timerViewModel.onCreateNotification() }
+        onSaveRoom = {
+            val currentTime = LocalDateTime.now()
+            val formattedTime = currentTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+            val shift = Shift(timeStart = formattedTime.toString(), timeStop = null)
+            shift.timeStart = formattedTime.toString()
+            shiftViewModel.addShifts(shift = shift) }
     )
 }
 
@@ -52,7 +63,7 @@ fun TimerScreen(
     onStartClick: () -> Unit,
     onPauseClick: () -> Unit,
     onStopClick: () -> Unit,
-    onCreateNotification: () -> Unit
+    onSaveRoom: () -> Unit
 ) {
     val postNotificationPermission = rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS)
     val notificationHandler = NotificationHandler(context)
@@ -80,6 +91,17 @@ fun TimerScreen(
             }
 
         }
+        Spacer(modifier = Modifier.height(16.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Button(onClick = onSaveRoom) {
+                Text("SaveRoom")
+            }
+            Spacer(modifier = Modifier.width(16.dp))
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
 
         LaunchedEffect(key1 = true) {

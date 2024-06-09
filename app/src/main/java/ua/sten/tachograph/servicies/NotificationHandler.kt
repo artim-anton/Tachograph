@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import ua.sten.tachograph.R
 import kotlin.random.Random
 
 class NotificationHandler(private val context: Context) {
@@ -18,7 +19,7 @@ class NotificationHandler(private val context: Context) {
         val notification = NotificationCompat.Builder(context, notificationChannelID)
             .setContentTitle("Simple Notification")
             .setContentText("Message or text with notification")
-            .setSmallIcon(com.google.android.material.R.drawable.notification_template_icon_bg)
+            .setSmallIcon(R.drawable.tachograph)
             .setPriority(NotificationManager.IMPORTANCE_HIGH)
             .setAutoCancel(true)
             .build()  // finalizes the creation

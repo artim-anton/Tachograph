@@ -32,7 +32,7 @@ fun DriveScreen(
         ) {
             Column {
                 Text(
-                    text = shift.timeStart,
+                    text = shift.timeStart?:"",
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.padding(start = 8.dp)
                 )

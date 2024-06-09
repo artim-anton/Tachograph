@@ -36,12 +36,12 @@ fun ShiftListItem(
         ) {
             Column {
                 Text(
-                    text = shift.timeStart,
+                    text = "timeStart: ${shift.timeStart}",
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.padding(start = 8.dp)
                 )
                 Text(
-                    text = "${shift.timeStop} radio stations",
+                    text = "timeStop: ${shift.timeStop}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(start = 8.dp)
                 )

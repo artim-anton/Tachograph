@@ -37,8 +37,4 @@ class TimerViewModel : ViewModel() {
         super.onCleared()
         timerJob?.cancel()
     }
-
-    fun onCreateNotification() {
-
-    }
 }
